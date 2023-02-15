@@ -39,7 +39,7 @@ Go to the project directory
 Execute the command
 
 ```bash
-  py quickstart_django.py project_name application_name
+  py quickstart_django project_name application_name
 ```
 
 This will create a working django application with all the initial setup which is needed to run the app. Just change CD to project directory and run `py manage.py runserver`
