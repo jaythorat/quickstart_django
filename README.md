@@ -23,13 +23,13 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd django_quickstart
+  cd quickstart_django/src/
 ```
 
 Execute the command
 
 ```bash
-  py django_quickstart.py project_name application_name
+  py quickstart_django.py project_name application_name
 ```
 
 This will create a working django application with all the initial setup which is needed to run the app. Just change CD to project directory and run `py manage.py runserver`
