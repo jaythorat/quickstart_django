@@ -38,7 +38,12 @@ Execute the command
 
 This will create a working django application with all the initial setup which is needed to run the app. Just change directory to project directory and run `py manage.py runserver`
 
+## Tutorial
+https://user-images.githubusercontent.com/80217046/218991312-408552a2-332f-4224-915d-cea572e123ef.mp4
 
 ## Authors
 
 - [@jaythorat](https://www.github.com/jaythorat)
+
+
+
