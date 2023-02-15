@@ -5,6 +5,16 @@ A small python package which will help you to quickly start your django project.
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
+## Istallation
+```bash
+  py -m pip install pip install quickstart-django
+```
+
+## Usage
+```bash
+  py -m quickstart-django project_name application_name
+```
+
 
 ## Run Locally
 
@@ -17,7 +27,7 @@ Install dependencies
 Clone the project
 
 ```bash
-  git clone https://github.com/jaythorat/django_quickstart
+  git clone https://github.com/jaythorat/quickstart_django
 ```
 
 Go to the project directory
