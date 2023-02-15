@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "django-quickstart"
+version = "0.0.1"
+authors = [
+  { name="Jay Thorat", email="j.thorat10@gmail.com" },
+]
+description = "A small python package which will help you to quickly start your django project. It will create a django project with all the necessary files and folders in just single command."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/pypa/sampleproject"
+"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
