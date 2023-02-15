@@ -134,12 +134,9 @@ run python manage.py runserver
 {"*"*100}
     """)
 
-
 def quickstart_django():
     create_directories()
     create_files()
-
-
-
+    
 if __name__ == '__main__':
     quickstart_django()
