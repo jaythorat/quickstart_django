@@ -1,4 +1,4 @@
-# Django_quickstart
+# Quickstart_django
 
 A small python package which will help you to quickly start your django project. It will create a django project with all the necessary files and folders in just single command.
 

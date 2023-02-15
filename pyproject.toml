@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "django-quickstart"
-version = "0.0.1"
+name = "quickstart_django"
+version = "1.0"
 authors = [
   { name="Jay Thorat", email="j.thorat10@gmail.com" },
 ]
@@ -18,5 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pypa/sampleproject"
-"Bug Tracker" = "https://github.com/pypa/sampleproject/issues"
+"Homepage" = "https://github.com/jaythorat/quickstart_django"
+"Bug Tracker" = "https://github.com/jaythorat/quickstart_django/issues"

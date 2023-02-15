@@ -4,13 +4,18 @@ import os
 base_path = os.getcwd()
 project_name = sys.argv[1]
 application_name = sys.argv[2]
+# os.system(f'py -m pip install django')
+
 def create_directories():
     os.system(f'django-admin startproject {project_name}')
     os.chdir(f'{project_name}')
+    print(f"Project {project_name} initialized")
     os.system(f'django-admin startapp {application_name}')
+    print(f"Application {application_name} created")
     os.system("mkdir templates")
     os.system("mkdir static")
     os.system("mkdir media")
+    print(f"Directories created ('templates', 'static', 'media')")
 
 # Path: main.py
 def create_files():
@@ -44,6 +49,7 @@ def create_files():
         """
         fp.write(content)
     
+    print(f"Files created ('index.html', 'style.css')")
 
     # For URLS.PY file in project/aplication
     path_forURLsPY = f'{os.getcwd()}/{application_name}'
@@ -57,7 +63,7 @@ urlpatterns = [
 ]
 """
         fp.write(content)
-
+    print(f"URLS.PY file created in {application_name}")
     # For VIEWS.PY file in project/aplication
     path_forViewsPY = f'{os.getcwd()}/{application_name}'   
     with open(os.path.join(path_forViewsPY, 'views.py'), 'w') as fp:
@@ -70,7 +76,7 @@ def index(request):
 """
         fp.write(content)
     
-
+    print(f"VIEWS.PY file created in {application_name}")
     # For settings.py file in project
     path_forSettingsPY = f'{os.getcwd()}/{project_name}' 
     with open(os.path.join(path_forSettingsPY, "settings.py"), 'a') as fp:
@@ -80,7 +86,8 @@ STATICFILES_DIRS = [
 ]
 """
         fp.write(content)
-        
+    print(f"STATICFILES_DIRS added in settings.py")
+
     with open(os.path.join(path_forSettingsPY, "settings.py"), 'r+') as fp:
         content = fp.read()
         list = content.split("\n")
@@ -92,15 +99,13 @@ STATICFILES_DIRS = [
                 template_dir = list.index(i)+3
                 list[template_dir]=f"        'DIRS': [BASE_DIR / 'templates'],"
 
-        print(len(list))
         result = ""
         for i in range(len(list)):
             result += list[i]
             result += "\n"
         fp.seek(0)
         fp.write(result)
-        # print(result)
-    
+    print(f"INSTALLED_APPS added in settings.py")
     # For urls.py file in project
     path_forURLsPY_project = f'{os.getcwd()}/{project_name}'
     with open(os.path.join(path_forURLsPY_project, "urls.py"), 'r+') as fp:
@@ -119,13 +124,22 @@ STATICFILES_DIRS = [
             result += "\n"
         fp.seek(0)
         fp.write(result)
-        # print(result)
+    print(f"URLS.PY file updated in {project_name}")
+    print(f"""
+{"*"*100}
+Django Starter Package is ready to use
+cd into {project_name} 
+          & 
+run python manage.py runserver
+{"*"*100}
+    """)
 
-def django_quickstart():
+
+def quickstart_django():
     create_directories()
     create_files()
 
 
 
 if __name__ == '__main__':
-    django_quickstart()
+    quickstart_django()
