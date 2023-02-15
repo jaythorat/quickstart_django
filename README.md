@@ -7,7 +7,7 @@ A small python package which will help you to quickly start your django project.
 
 ## Istallation
 ```bash
-  py -m pip install pip install quickstart-django
+  py -m pip install quickstart-django
 ```
 
 ## Usage
