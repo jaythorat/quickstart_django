@@ -12,7 +12,7 @@ A small python package which will help you to quickly start your django project.
 
 ## Usage
 ```bash
-  py -m quickstart-django project_name application_name
+  py -m quickstart_django project_name application_name
 ```
 
 
