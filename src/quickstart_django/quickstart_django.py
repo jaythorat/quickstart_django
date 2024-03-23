@@ -4,10 +4,18 @@ import os
 base_path = os.getcwd()
 project_name = sys.argv[1]
 application_name = sys.argv[2]
-# os.system(f'py -m pip install django')
 
 def install_requirements(module_name : str) -> None:
-    pass
+    try:
+        os.system(f"pip install {module_name}")
+    except:
+        print(f"Failed: Unable to install module {module_name}")
+
+def create_dir(dir_name : str) -> None:
+    try:
+        os.system(f"mkdir {dir_name}")
+    except:
+        print(f"Failed : Unable to create directory {dir_name}")
 
 def create_directories():
     os.system(f'django-admin startproject {project_name}')
@@ -15,10 +23,9 @@ def create_directories():
     print(f"Project {project_name} initialized")
     os.system(f'django-admin startapp {application_name}')
     print(f"Application {application_name} created")
-    os.system("mkdir templates")
-    os.system("mkdir static")
-    os.system("mkdir media")
-    print(f"Directories created ('templates', 'static', 'media')")
+    create_dir("templates")
+    create_dir("static")
+    create_dir("media")
 
 # Path: main.py
 def create_files():
