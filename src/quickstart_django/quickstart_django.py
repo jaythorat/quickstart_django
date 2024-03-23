@@ -6,6 +6,9 @@ project_name = sys.argv[1]
 application_name = sys.argv[2]
 # os.system(f'py -m pip install django')
 
+def install_requirements(module_name : str) -> None:
+    pass
+
 def create_directories():
     os.system(f'django-admin startproject {project_name}')
     os.chdir(f'{project_name}')
