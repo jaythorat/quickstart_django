@@ -23,8 +23,9 @@ def create_directories(essential_dirs : list[str]) -> None:
 
 def create_project(project_name : str = "sampleProject") -> None:
     os.system(f'django-admin startproject {project_name}')
-    os.chdir(f'{project_name}')
     print(f"Project {project_name} initialized")
+    os.chdir(f'{project_name}')
+    print(f"Current Working dir changed to {os.getcwd}")
 
 def create_app(app_name : str = "sampleApp") -> None:
     os.system(f'django-admin startapp {application_name}')
@@ -148,6 +149,7 @@ run python manage.py runserver
     """)
 
 def quickstart_django():
+    install_requirements("django")
     create_project()
     create_app()
     create_directories(["templates","static","media"])
