@@ -32,7 +32,7 @@ def create_app(app_name : str = "sampleApp") -> None:
     print(f"Application {app_name} created")
 
 # Path: main.py
-def create_files(app_name : str = "sampleApp",project_name : str = "sampleProject"):
+def create_files(app_name : str = "sampleApp",project_name : str = "sampleProject") -> None:
     path_forHTML = f'{os.getcwd()}/templates'
     path_forCSS = f'{os.getcwd()}/static'
     html_file = 'index.html'
