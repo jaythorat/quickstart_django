@@ -2,8 +2,9 @@ import sys
 import os
 
 base_path = os.getcwd()
-project_name = sys.argv[1]
-application_name = sys.argv[2]
+# print(base_path)
+# project_name = sys.argv[1]
+# app_name = sys.argv[2]
 
 def install_requirements(module_name : str) -> None:
     try:
@@ -27,11 +28,11 @@ def create_project(project_name : str = "sampleProject") -> None:
     print(f"Project {project_name} initialized")
 
 def create_app(app_name : str = "sampleApp") -> None:
-    os.system(f'django-admin startapp {application_name}')
-    print(f"Application {application_name} created")
+    os.system(f'django-admin startapp {app_name}')
+    print(f"Application {app_name} created")
 
 # Path: main.py
-def create_files():
+def create_files(app_name : str = "sampleApp",project_name : str = "sampleProject"):
     path_forHTML = f'{os.getcwd()}/templates'
     path_forCSS = f'{os.getcwd()}/static'
     html_file = 'index.html'
@@ -39,19 +40,22 @@ def create_files():
 
     # For HTML file in templates
     with open(os.path.join(path_forHTML, html_file), 'w') as fp:
-        content = """<!DOCTYPE html>  
-    <html lang="en">  
-    <head>  
-        <meta charset="UTF-8">  
-        <title>Djaango Starter Package</title>
-        {% load static%}
-        <link rel="stylesheet" href="{% static 'style.css' %}">
-    </head>  
-    <body>  
-    <h2>Welcome to Django Starter!!!</h2>  
-    </body>  
-    </html>  
-        """
+        content = """
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Djaango Starter Package</title>
+    {% load static%}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <h2>Welcome to Django Starter!!!</h2>
+</body>
+
+</html>"""
         fp.write(content)
 
     # For CSS file in static
@@ -65,20 +69,20 @@ def create_files():
     print(f"Files created ('index.html', 'style.css')")
 
     # For URLS.PY file in project/aplication
-    path_forURLsPY = f'{os.getcwd()}/{application_name}'
+    path_forURLsPY = f'{os.getcwd()}/{app_name}'
     with open(os.path.join(path_forURLsPY, 'urls.py'), 'w') as fp:
         content = f"""from django import views
 from django.urls import path
-from {application_name} import views
+from {app_name} import views
 import os
 urlpatterns = [
     path('', views.index, name='index'),
 ]
 """
         fp.write(content)
-    print(f"URLS.PY file created in {application_name}")
+    print(f"URLS.PY file created in {app_name}")
     # For VIEWS.PY file in project/aplication
-    path_forViewsPY = f'{os.getcwd()}/{application_name}'   
+    path_forViewsPY = f'{os.getcwd()}/{app_name}'   
     with open(os.path.join(path_forViewsPY, 'views.py'), 'w') as fp:
         content = f"""from django.shortcuts import render,redirect
 from django.http import HttpResponse
@@ -89,7 +93,7 @@ def index(request):
 """
         fp.write(content)
     
-    print(f"VIEWS.PY file created in {application_name}")
+    print(f"VIEWS.PY file created in {app_name}")
     # For settings.py file in project
     path_forSettingsPY = f'{os.getcwd()}/{project_name}' 
     with open(os.path.join(path_forSettingsPY, "settings.py"), 'a') as fp:
@@ -106,7 +110,7 @@ STATICFILES_DIRS = [
         list = content.split("\n")
         for i in list:
             if "INSTALLED_APPS" in i:
-                list.insert(list.index(i)+1, f"    '{application_name}.apps.{application_name.capitalize()}Config',")
+                list.insert(list.index(i)+1, f"    '{app_name}.apps.{app_name.capitalize()}Config',")
             
             if "TEMPLATES = [" in i:
                 template_dir = list.index(i)+3
@@ -128,7 +132,7 @@ STATICFILES_DIRS = [
             if "from django.contrib import admin" in i:
                 list.insert(list.index(i)+1, f"from django.urls import include")
             if "urlpatterns = [" in i:
-                list.insert(list.index(i)+1, f"    path('', include('{application_name}.urls')),")
+                list.insert(list.index(i)+1, f"    path('', include('{app_name}.urls')),")
 
         print(len(list))
         result = ""
