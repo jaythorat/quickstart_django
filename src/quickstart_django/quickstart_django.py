@@ -1,17 +1,11 @@
 import sys
 import os
+from utils import install_requirements
 
 base_path = os.getcwd()
 # print(base_path)
 # project_name = sys.argv[1]
 # app_name = sys.argv[2]
-
-def install_requirements(module_name : str) -> None:
-    try:
-        os.system(f"pip install {module_name}")
-    except:
-        print(f"Failed: Unable to install module {module_name}")
-
 def create_directory(dir_name : str) -> None:
     try:
         os.system(f"mkdir {dir_name}")
@@ -152,6 +146,9 @@ run python manage.py runserver
     """)
 
 def quickstart_django():
+    
+    required_package = 'django'
+    install_requirements(required_package)
     create_project()
     create_app()
     create_directories(["templates","static","media"])
