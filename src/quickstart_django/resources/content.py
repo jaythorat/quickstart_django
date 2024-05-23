@@ -17,6 +17,7 @@ def index_content() -> str:
 </html>
 """
 
+
 def css_content() -> str:
     return """ 
 body{
@@ -24,7 +25,8 @@ body{
     }
 """
 
-def app_urls_content(app_name : str) -> str:
+
+def app_urls_content(app_name: str) -> str:
     return """
 from django import views
 from django.urls import path
@@ -34,6 +36,7 @@ urlpatterns = [
     path('', views.index, name='index'),
 ]
 """
+
 
 def app_views_content() -> str:
     return """ 
@@ -45,6 +48,7 @@ def index(request):
     return render(request,'index.html')
     
 """
+
 
 def project_settings_content() -> str:
     return """#Added via Django Starter Module for static files
