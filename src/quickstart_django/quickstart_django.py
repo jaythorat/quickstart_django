@@ -1,7 +1,7 @@
 import sys
 import os
-from utils import install_requirements, create_project, create_app, create_directories
-from resources.content import (
+from .utils import install_requirements, create_project, create_app, create_directories
+from .resources.content import (
     index_content,
     css_content,
     app_urls_content,
