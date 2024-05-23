@@ -1,30 +1,7 @@
 import sys
 import os
-from utils import install_requirements
-
-base_path = os.getcwd()
-# print(base_path)
-# project_name = sys.argv[1]
-# app_name = sys.argv[2]
-def create_directory(dir_name : str) -> None:
-    try:
-        os.system(f"mkdir {dir_name}")
-    except:
-        print(f"Failed : Unable to create directory {dir_name}")
-
-def create_directories(essential_dirs : list[str]) -> None:
-    for dir in essential_dirs:
-        create_directory(f"{dir}")
-
-def create_project(project_name : str = "sampleProject") -> None:
-    os.system(f'django-admin startproject {project_name}')
-    os.chdir(f'{project_name}')
-    print(f"Project {project_name} initialized")
-
-def create_app(app_name : str = "sampleApp") -> None:
-    os.system(f'django-admin startapp {app_name}')
-    print(f"Application {app_name} created")
-
+from utils import install_requirements,create_project,create_app,create_directories
+from resources.content import index_content,css_content,app_urls_content,app_views_content,project_settings_content
 # Path: main.py
 def create_files(app_name : str = "sampleApp",project_name : str = "sampleProject") -> None:
     path_forHTML = f'{os.getcwd()}/templates'
@@ -34,30 +11,12 @@ def create_files(app_name : str = "sampleApp",project_name : str = "sampleProjec
 
     # For HTML file in templates
     with open(os.path.join(path_forHTML, html_file), 'w') as fp:
-        content = """
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Djaango Starter Package</title>
-    {% load static%}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-
-<body>
-    <h2>Welcome to Django Starter!!!</h2>
-</body>
-
-</html>"""
+        content = index_content()
         fp.write(content)
 
     # For CSS file in static
     with open(os.path.join(path_forCSS, css_file), 'w') as fp:
-        content = """body{
-        background-color: #f1f1f1;
-    }
-        """
+        content = css_content()
         fp.write(content)
     
     print(f"Files created ('index.html', 'style.css')")
@@ -65,37 +24,22 @@ def create_files(app_name : str = "sampleApp",project_name : str = "sampleProjec
     # For URLS.PY file in project/aplication
     path_forURLsPY = f'{os.getcwd()}/{app_name}'
     with open(os.path.join(path_forURLsPY, 'urls.py'), 'w') as fp:
-        content = f"""from django import views
-from django.urls import path
-from {app_name} import views
-import os
-urlpatterns = [
-    path('', views.index, name='index'),
-]
-"""
+        content = app_urls_content(app_name)
         fp.write(content)
     print(f"URLS.PY file created in {app_name}")
+    
     # For VIEWS.PY file in project/aplication
     path_forViewsPY = f'{os.getcwd()}/{app_name}'   
     with open(os.path.join(path_forViewsPY, 'views.py'), 'w') as fp:
-        content = f"""from django.shortcuts import render,redirect
-from django.http import HttpResponse
-
-# Create your views here.
-def index(request):
-    return render(request,'index.html')
-"""
+        content = app_views_content()
         fp.write(content)
-    
     print(f"VIEWS.PY file created in {app_name}")
+    
+    
     # For settings.py file in project
     path_forSettingsPY = f'{os.getcwd()}/{project_name}' 
     with open(os.path.join(path_forSettingsPY, "settings.py"), 'a') as fp:
-        content = f"""#Added via Django Starter Module for static files
-STATICFILES_DIRS = [
-     BASE_DIR / "static"
-]
-"""
+        content = project_settings_content()
         fp.write(content)
     print(f"STATICFILES_DIRS added in settings.py")
 
@@ -146,9 +90,10 @@ run python manage.py runserver
     """)
 
 def quickstart_django():
-    
+    base_path = os.getcwd()
     required_package = 'django'
     install_requirements(required_package)
+    
     create_project()
     create_app()
     create_directories(["templates","static","media"])
