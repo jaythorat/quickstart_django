@@ -127,6 +127,7 @@ STATICFILES_DIRS = [
 
         print(len(list))
         result = ""
+
         for i in range(len(list)):
             result += list[i]
             result += "\n"
